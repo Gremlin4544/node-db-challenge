@@ -8,7 +8,7 @@ router.get('/', (req, res) => {
             res.status(200).json(response);
         })
         .catch(err => {
-            res.status(500).json({error: err, message: 'Unable to retrieve resources'});
+            res.status(500).json({error: 'Unable to retrieve resources'});
         });
 }
 );
@@ -20,7 +20,7 @@ router.get('/:id', (req, res) => {
             res.status(200).json(response);
         })
         .catch(err => {
-            res.status(500).json({error: err, message: `Unable to retrieve resource of id ${id}`});
+            res.status(500).json({error: `Unable to retrieve resource of id ${id}`});
         });
 });
 

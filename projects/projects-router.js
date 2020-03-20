@@ -8,7 +8,7 @@ router.get('/', (req, res) => {
         res.status(200).json(response);
     })
     .catch(err => {
-        res.status(500).json({error: err, message: 'Unable to retrieve projects'});
+        res.status(500).json({error: 'Unable to retrieve projects'});
     });
 });
 
@@ -32,7 +32,7 @@ router.get('/:id', (req, res) => {
         res.status(200).json(response);
     })
     .catch(err => {
-        res.status(500).json({error: err, message: `Unable to retrieve project of id ${id}`});
+        res.status(500).json({error: `Unable to retrieve project of id ${id}`});
     });
 })
 
@@ -43,7 +43,7 @@ router.get('/:id/resources', (req, res) => {
             res.status(200).json(response);
         })
         .catch(err => {
-            res.status(500).json({error: err, message: `Unable to retrieve resources for project of id ${id}`});
+            res.status(500).json({error: `Unable to retrieve resources for project of id ${id}`});
         });
 });
 
@@ -54,7 +54,7 @@ router.get('/:id/details', (req, res) => {
             res.status(200).json(response);
         })
         .catch(err => {
-            res.status(500).json({error: err, message: `Unable to retrieve details for project of id ${id}`});
+            res.status(500).json({error: `Unable to retrieve details for project of id ${id}`});
         });
 })
 
@@ -66,7 +66,7 @@ router.delete('/:id', (req, res) => {
         res.status(200).json(response);
     })
     .catch(err => {
-        res.status(500).json({error: err, message: `Unable to delete project with id ${id}`});
+        res.status(500).json({error: `Unable to delete project with id ${id}`});
     });
 });
 
@@ -78,7 +78,7 @@ router.put('/:id', (req, res) => {
         res.status(200).json(response);
     })
     .catch(err => {
-        res.status(500).json({error: err, message: `Unable to update project with id ${id}`});
+        res.status(500).json({error: `Unable to update project with id ${id}`});
     });
 });
 
