@@ -1,11 +1,13 @@
 const express = require('express');
+
 const Projects = require('./projects-model.js')
+
 const router = express.Router();
 
 router.get('/', (req, res) => {
     Projects.getProjects()
     .then(response => {
-        res.status(200).json({ message: 'its working! Its working!'});
+        res.status(200).json({ message: 'Qui-Gon - its working! Its working!'});
     })
     .catch(err => {
         res.status(500).json({error: 'Unable to retrieve projects'});
