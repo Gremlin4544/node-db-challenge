@@ -7,7 +7,7 @@ module.exports = {
     connection: {
       filename: './data/projects.db3'
     },
-    
+    useNullAsDefault: true,
   },
 
 };
