@@ -5,10 +5,10 @@ const router = express.Router();
 router.get('/', (req, res) => {
     Tasks.getTasks()
     .then(response => {
-        res.status(200).json(response);
+        res.status(200).json({ message: 'its working! Its working!'});
     })
     .catch(err => {
-        res.status(500).json({error: err, message: 'Unable to retrieve tasks'});
+        res.status(500).json({error: 'Unable to retrieve tasks'});
     });
 });
 
@@ -31,7 +31,7 @@ router.get('/:id', (req, res) => {
         res.status(200).json(response);
     })
     .catch(err => {
-        res.status(500).json({error: err, message: `Unable to retrieve task of id ${id}`});
+        res.status(500).json({error: `Unable to retrieve task of id ${id}`});
     });
 });
 
@@ -42,7 +42,7 @@ router.get('/project/:id', (req, res) => {
         res.status(200).json(response);
     })
     .catch(err => {
-        res.status(500).json({error: err, message: `Unable to retrieve tasks for project of id ${id}`});
+        res.status(500).json({error: `Unable to retrieve tasks for project of id ${id}`});
     });
 });
 
@@ -54,7 +54,7 @@ router.delete('/:id', (req, res) => {
         res.status(200).json(response);
     })
     .catch(err => {
-        res.status(500).json({error: err, message: `Unable to delete task with id ${id}`});
+        res.status(500).json({error: `Unable to delete task with id ${id}`});
     });
 });
 
@@ -66,7 +66,7 @@ router.put('/:id', (req, res) => {
         res.status(200).json(response);
     })
     .catch(err => {
-        res.status(500).json({error: err, message: `Unable to update task with id ${id}`});
+        res.status(500).json({error: `Unable to update task with id ${id}`});
     });
 });
 
