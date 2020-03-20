@@ -5,7 +5,7 @@ const router = express.Router();
 router.get('/', (req, res) => {
     Projects.getProjects()
     .then(response => {
-        res.status(200).json(response);
+        res.status(200).json({ message: 'its working! Its working!'});
     })
     .catch(err => {
         res.status(500).json({error: 'Unable to retrieve projects'});

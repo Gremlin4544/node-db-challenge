@@ -1,54 +1,27 @@
-const express = require('express');
-const Resources = require('./resources-model.js');
-const router = express.Router();
+const express = require('express')
 
-router.get('/', (req, res) => {
-    Resources.getResources()
-        .then(response => {
-            res.status(200).json(response);
-        })
-        .catch(err => {
-            res.status(500).json({error: 'Unable to retrieve resources'});
-        });
-}
-);
+const Resources = require('./resources-model')
 
-router.get('/:id', (req, res) => {
-    const id = req.params.id;
-    Resources.getResource(id)
-        .then(response => {
-            res.status(200).json(response);
-        })
-        .catch(err => {
-            res.status(500).json({error: `Unable to retrieve resource of id ${id}`});
-        });
-});
+const router = express.Router()
 
-router.post('/', (req, res) => {
-    const resourceData = req.body;
+router.get('/', (req, res, next) => {
+    Resources.find()
+    .then(resources => {
+        res.json(resources)
+    })
+    .catch(err => {
+        next(err)
+    })
+})
 
-    Resources.addResource(resourceData)
-        .then(resource => {
-            res.status(201).json(resource);
-        })
-        .catch (err => {
-            res.status(500).json({ message: 'Failed to create new resource' });
-        }); 
-});
-
-router.post('/:resource_id/connect/:project_id', (req, res) => {
-    const resource_id = req.params.resource_id;
-    const project_id = req.params.project_id;
-
-    Resources.connectResourceToProject(resource_id, project_id)
-        .then(response => {
-            console.log(response);
-            res.status(201).json(response);
-        })
-        .catch(err => {
-            console.log(err);
-            res.status(500).json({ message: 'Failed to create new connection' });
-        })
-});
+router.post('/', (req, res, next) => {
+    Resources.add(req.body)
+    .then(newResource => {
+        res.json(newResource)
+    })
+    .catch(err => {
+        next(err)
+    })
+})
 
 module.exports = router;

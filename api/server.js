@@ -19,8 +19,8 @@ server.use('/api/projects', ProjectsRouter);
 server.use('/api/tasks', TasksRouter);
 
 server.use((err, req, res, next) => {
-    console.log(err, "server error");
-    res.json({message: "ERROR!"})
+    console.log(err);
+    res.json({message: "SERVERjs ERROR!"})
 })
 
 module.exports = server;
