@@ -14,15 +14,7 @@ router.get('/', (req, res, next) => {
     })
 })
 
-router.get('/', (req, res) => {
-    Projects.getProjects()
-    .then(response => {
-        res.status(200).json({ message: 'Qui-Gon - its working! Its working!'});
-    })
-    .catch(err => {
-        res.status(500).json({error: 'Unable to retrieve projects'});
-    });
-});
+
 
 router.post('/', (req, res) => {
     const projectData = req.body;
