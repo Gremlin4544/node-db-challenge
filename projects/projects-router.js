@@ -4,6 +4,16 @@ const Projects = require('./projects-model.js')
 
 const router = express.Router();
 
+router.get('/', (req, res, next) => {
+    Projects.getProjects()
+    .then(projects => {
+        res.json({projects, message: 'Qui-Gon - its working! Its working!'})
+    })
+    .catch(err => {
+        next(err)
+    })
+})
+
 router.get('/', (req, res) => {
     Projects.getProjects()
     .then(response => {

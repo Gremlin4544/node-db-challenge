@@ -2,6 +2,19 @@ const express = require('express');
 const Tasks = require('./tasks-model.js');
 const router = express.Router();
 
+
+
+router.get('/', (req, res, next) => {
+    Tasks.getTasks()
+    .then(tasks => {
+        res.json({tasks, message: 'Qui-Gon - its working! Its working!'})
+    })
+    .catch(err => {
+        next(err)
+    })
+})
+
+
 router.get('/', (req, res) => {
     Tasks.getTasks()
     .then(response => {
